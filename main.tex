@@ -1,59 +1,88 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% v1.0.0
-% lab-report-template
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% main.tex - Documento principale della tesi
+\documentclass[12pt,a4paper,twoside,openright]{extreport}
 
-\documentclass[twocolumn]{article}
+% Pacchetti principali
+\usepackage{amsmath}                            % Controllo sulle equazioni 
+\usepackage{siunitx}
+\usepackage{csquotes}                           % Citazioni
+\usepackage{enumitem}                           % Controllo sulle enumerazioni
+\usepackage[
+    a4paper,
+    top=2cm,bottom=2cm,
+    outer=2cm,inner=2cm,
+    includeheadfoot
+]{geometry}                                     % Margini richiesti dall'università
+\usepackage{graphicx}                           % Immagini
+\usepackage{icomma}                             % Separazione decimali con virgola
+\usepackage{minted}                             % Codice con colorazione sintassi
+\usepackage[a-1a]{pdfx}                         % Formato PDF/A richiesto
+\usepackage[output-decimal-marker={,}]{siunitx} % Unità di misura
+\usepackage{subcaption}                         % Sottodidascalie
+\usepackage{svg}                                % File SVG
+\usepackage{float}                              % Controllo posizione immagini
+\usepackage{hyperref}                           % Link ipertestuali
+\usepackage{cite}                               % Citazioni bibliografiche
+\usepackage[italian]{babel}                     % Lingua italiana
+\selectlanguage{italian}
 
-% Include packages and document structure
-\include{style}
+% Bibliografia
+\usepackage[backend=bibtex,style=ieee]{biblatex}
+\addbibresource{bibliografia.bib}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%               HEADER
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{
-    \vspace{-1cm}
-    \includegraphics[height=2.5cm]{imgs/logo-unipd.pdf}
-    \hfill
-    \includegraphics[height=2.5cm]{imgs/logo-dei.pdf}
-    \hfill
-    \par
-    \vspace{0.5cm}
-    \textbf{Laboratory Report}\\
-    Lo stesso evento può essere raccontato diversamente, forse per influenzare il popolo?
+% Font
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
 
-}
-\author{
-    Authors: {Tommaso Orlandini, Alvise Garberino, Jacopo Falasco}\\
-}
+% Impostazioni generali
+\usepackage{setspace}
+\onehalfspacing                                  % Interlinea 1.5 richiesto
+\sloppy                                          % Evita traboccamenti di testo
 
-\date{GG/MM/20XX}
+% Glossario
+\usepackage{glossaries}                          % Gestione glossario
+\makeglossaries
+\input{glossario}                      % Caricamento definizioni glossario
 
-% Document begin
+% Dati frontespizio
+\title{La politicizzazione del linguaggio giornalistico: analisi di bias e strategie narrative}
+
 \begin{document}
-\maketitle
+    \pagenumbering{roman}
+    \pagestyle{empty}
+    
+    \input{Capitoli/frontespizio}
+    \cleardoublepage
+    
+    \input{Capitoli/dedica}
+    \cleardoublepage
+    
+    \pagestyle{plain}
+    
+    \chapter*{Sommario}
+    La ricerca si basa su una domanda a cui non perviene, o quasi mai, una risposta certa: "Le testate giornalistiche caratterizzate da posizionamenti politici differenti confezionano, anche in assenza di esplicite manipolazioni, narrazioni alternative di uno stesso fatto attraverso scelte linguistiche e strategie di \gls{framing}?". A tal scopo, si propone un’analisi comparativa di un \gls{corpus} di articoli riguardanti l’attuale presidente degli Stati Uniti Donald Trump. 
+    I testi saranno in primo luogo classificati in base al contesto tematico, quindi sottoposti ad un’analisi testuale focalizzata sull’emergere di \gls{bias-linguistici}, meccanismi di \gls{agenda-setting} e processi di costruzione narrativa; infine, saranno discussi i risultati quantitativi e qualitativi ottenuti.
+    \cleardoublepage
+    
+    \pagenumbering{arabic}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                 BODY
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \listoftables
+    \cleardoublepage
 
-%% Objectives
-\section{Obbiettivi}
-\lipsum[1]
-
-%% Setup description
-\section{Descrizione}
-\lipsum[2-5]
-
-%% Results
-\section{Risultati}
-\lipsum[6-8]
-
-%% Conclusions
-\section{Conclusioni}
-\lipsum[1]
-
-\bibliographystyle{apalike2}
-\bibliography{references}
-
+    \listoffigures
+    \cleardoublepage
+    
+    \tableofcontents
+    \input{Capitoli/Capitolo1}
+    \input{Capitoli/Capitolo2}
+    \input{Capitoli/Capitolo3}
+    \input{Capitoli/Capitolo4}
+    \input{Capitoli/Capitolo5}
+    \input{Capitoli/Capitolo6}
+    \input{Capitoli/Capitolo7}
+    \input{Capitoli/Capitolo8}
+    
+    \cleardoublepage
+    
+    \printglossaries       % Stampa il glossario
+    \printbibliography[heading=bibintoc] % Stampa bibliografia
 \end{document}
